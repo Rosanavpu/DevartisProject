@@ -1,10 +1,10 @@
-import { USER_REGISTER, USER_LOG_IN} from "../../utils/constants"
+import { USER_REGISTER, USER_LOG_IN } from "../../utils/constants"
 
 const initialState = {
   user: {}
 };
 
-export default (state = initialState, action) => {
+export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_REGISTER:
       return {

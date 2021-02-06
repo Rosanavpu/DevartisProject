@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { loginUserAction } from '../../actions/users';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -40,7 +41,12 @@ export default function LogIn() {
   const [user, setUser] = useState("")
   const [password, setPassword] = useState("")
   const dispatch = useDispatch()
-
+  let history = useHistory();
+  
+  const handleSubmitAndRedirect = () => {
+    handleSubmit();
+    history.push('/')
+  }
   const handleSubmit = () => {
     dispatch(loginUserAction({ user, password }))
   }
@@ -93,7 +99,7 @@ export default function LogIn() {
             variant="contained"
             color="default"
             className={classes.submit}
-            onClick={() => handleSubmit()}
+            onClick={() => handleSubmitAndRedirect()}
           >
             LOG-IN
           </Button>
@@ -101,6 +107,6 @@ export default function LogIn() {
         </form>
       </div>
 
-    </Container>
+    </Container >
   );
 }
