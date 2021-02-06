@@ -11,7 +11,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux"
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -22,6 +23,13 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  appBar: {
+    backgroundColor: "#F2F7F8",
+  },
+  link: {
+    textDecoration: "none",
+    color: "#333333"
+  }
 }));
 
 export default function Main() {
@@ -29,7 +37,10 @@ export default function Main() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    // dispatch(fetchState())
+  }, [])
   const handleChange = (event) => {
     setAuth(event.target.checked);
   };
@@ -44,24 +55,23 @@ export default function Main() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            <MenuIcon style={{ color: "#333333" }} />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Feeds
+          <Link to="/" className={classes.link}>
+            <Typography variant="h6" className={classes.title}>
+              RRSS
           </Typography>
-          <div>
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+          </Link>
+          <>
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}
@@ -77,12 +87,23 @@ export default function Main() {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <Link to="/register" style={{
+                textDecoration: "none",
+                color: "inherit"
+              }}>
+                <MenuItem onClick={handleClose}>Register</MenuItem>
+              </Link>
+              <Link to="/logIn" style={{
+                textDecoration: "none",
+                color: "inherit"
+              }}>
+                <MenuItem onClick={handleClose}>Log-In</MenuItem>
+              </Link>
+
             </Menu>
-          </div>
+          </>
         </Toolbar>
       </AppBar>
-    </div>
+    </div >
   );
 }
