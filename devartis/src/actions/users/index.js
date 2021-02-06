@@ -5,12 +5,12 @@ import { USER_REGISTER, USER_LOG_IN } from "../../utils/constants"
 export const registerUser = (user) => ({
   type: USER_REGISTER,
   user
-})
+});
 
 export const loginUser = (user) => ({
   type: USER_LOG_IN,
   user
-})
+});
 
 export function registerUserAction(data) {
   return (dispatch) => {
@@ -19,7 +19,7 @@ export function registerUserAction(data) {
         dispatch(registerUser(res.data));
       })
   };
-}
+};
 
 export function loginUserAction(data) {
   return (dispatch) => {
@@ -28,5 +28,4 @@ export function loginUserAction(data) {
         dispatch(loginUser(res.data));
       })
   };
-
-}
+};
