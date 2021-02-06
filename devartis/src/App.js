@@ -6,37 +6,26 @@ import {
   Link
 } from "react-router-dom";
 import Main from './components/main';
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   menuButton: {
-//     marginRight: theme.spacing(2),
-//   },
-//   title: {
-//     flexGrow: 1,
-//   },
-// }));
+import Register from './components/register';
+import LogIn from './components/login';
 
 function App() {
-  // const classes = useStyles();
   return (
     <Router>
       <div>
         <Route component={Main} />
-        {/* <Switch>
-        <Route
-          exact
-          path="/products/:name"
-          component={SingleProductContainer}
-        />
-        <Route path="/products" component={ProductsContainer} />
-        <Route exact path="/category/:name" component={ProductsContainer} />
-        <Route path="/carrito" component={CarritoContainer} />
-        <Route path="/profile" component={ProfileUserContainer} />
-        <Route exact path="/" component={HomeContainer} />
-      </Switch> */}
+        <Switch>
+          <Route
+            exact
+            path="/register"
+            component={Register}
+          />
+          <Route
+            exact
+            path="/logIn"
+            component={LogIn}
+          />
+        </Switch>
       </div>
     </Router>
 
