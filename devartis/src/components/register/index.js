@@ -10,6 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: "#4D8693"//theme.palette.secondary.main,
+    backgroundColor: "#4D8693",
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Register() {
+  const classes = useStyles();
   const [user, setUser] = useState("")
   const [password, setPassword] = useState("")
   const dispatch = useDispatch()
@@ -49,8 +51,12 @@ export default function Register() {
   const handleSubmit = () => {
     dispatch(registerUserAction({ user, password }))
   }
-  const classes = useStyles();
+  let history = useHistory();
 
+  const handleSubmitAndRedirect = () => {
+    handleSubmit();
+    history.push('/')
+  }
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -96,7 +102,7 @@ export default function Register() {
               variant="contained"
               color="default"
               className={classes.submit}
-              onClick={() => handleSubmit()}
+              onClick={() => handleSubmitAndRedirect()}
             >
               Sign In
             </Button>

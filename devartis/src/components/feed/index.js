@@ -69,7 +69,6 @@ export default function Feeds() {
 
   const handleSubmit = () => {
     if (state.user.hasOwnProperty("access_token")) {
-      console.log("ENTRE")
       let token = state.user.access_token
       return dispatch(addMyFeed({ url, token }))
 
@@ -77,7 +76,6 @@ export default function Feeds() {
   }
 
   const handleDelete = (id) => {
-    console.log(id, "IDIDD")
     if (state.user.hasOwnProperty("access_token")) {
       let token = state.user.access_token
       return dispatch(deleteFeedUser({ id, token }))

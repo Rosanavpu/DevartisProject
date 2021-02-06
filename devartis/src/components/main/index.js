@@ -1,108 +1,50 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  appBar: {
-    backgroundColor: "#F2F7F8",
-  },
-  link: {
-    textDecoration: "none",
-    color: "#333333"
-  }
-}));
+import '../../App.css';
 
 export default function Main() {
-  const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState("");
-  const open = Boolean(anchorEl);
-  const dispatch = useDispatch();
-  const state = useSelector(state => state.userReducer)
-  // React.useEffect(() => {
-  //   // dispatch(feed())
-  // }, [])
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   return (
-    <div className={classes.root}>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-            color="inherit"
-          >
-            <MenuIcon style={{ color: "#333333" }} />
-          </IconButton>
-          <Link to="/" className={classes.link}>
-            <Typography variant="h6" className={classes.title}>
-              RRSS
-          </Typography>
-          </Link>
-          <>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={open}
-              onClose={handleClose}
-            >
-              <Link to="/register" style={{
-                textDecoration: "none",
-                color: "inherit"
-              }}>
-                <MenuItem onClick={handleClose}>Register</MenuItem>
-              </Link>
-              <Link to="/logIn" style={{
-                textDecoration: "none",
-                color: "inherit"
-              }}>
-                <MenuItem onClick={handleClose}>Log-In</MenuItem>
-              </Link>
-
-            </Menu>
-          </>
-        </Toolbar>
-      </AppBar>
-    </div >
+    <>
+      <div className='container-fluid bg-header' id='home'>
+        <div className='overlay-grey'>
+          <div className='container'>
+            <div className='row'>
+              <div className='banner-text wow bounceInUp' data-wow-delay='0.1s'>
+                <h2>Welcome to RSS Reader</h2>
+                <p><span className='decorate'>Explore your favorite Articles</span></p>
+                <div className='text-center wow bounceInUp' data-wow-delay='0.3s'>
+                  <button onClick={() => window.location.href = '/register'} >START YOUR ACCOUNT</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='container' id='about'>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae expedita necessitatibus repellendus quaerat nam odit non natus ut maiores. Quae esse nisi beatae dignissimos ex facere voluptas excepturi, expedita sint?</p>
+        <br />
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae expedita necessitatibus repellendus quaerat nam odit non natus ut maiores. Quae esse nisi beatae dignissimos ex facere voluptas excepturi, expedita sint?</p>
+        <br />
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae expedita necessitatibus repellendus quaerat nam odit non natus ut maiores. Quae esse nisi beatae dignissimos ex facere voluptas excepturi, expedita sint?</p>
+        <br />
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae expedita necessitatibus repellendus quaerat nam odit non natus ut maiores. Quae esse nisi beatae dignissimos ex facere voluptas excepturi, expedita sint?</p>
+      </div>
+      <div>
+      </div>
+      <div className='container-fluid bg-header2' id='home'>
+        <div className='overlay-grey'>
+          <div className='container'>
+            <div className='row'>
+              <div className='banner-text wow bounceInUp' data-wow-delay='0.1s'>
+                <h2>OR</h2>
+                <p><span className='decorate'>If you already have an account</span></p>
+                <div className='text-center wow bounceInUp' data-wow-delay='0.3s'>
+                  <button onClick={() => window.location.href = '/login'}>SIGN IN</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

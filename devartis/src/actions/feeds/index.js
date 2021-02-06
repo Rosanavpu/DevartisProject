@@ -44,7 +44,6 @@ export function deleteFeedUser(data) {
     return axios.delete(`http://167.99.162.146/feeds/${data.id}`,
       { headers: { "Authorization": `Bearer ${data.token}` } })
       .then(res => {
-        console.log(res, "RESSS")
         dispatch(deleteFeed(res.data));
       })
   };
