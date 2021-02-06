@@ -9,7 +9,8 @@ npm install
 # or
 yarn install
 ```
-###Then, start the project with:
+ 
+### Then, start the project with:
 
 ```bash
 npm start
